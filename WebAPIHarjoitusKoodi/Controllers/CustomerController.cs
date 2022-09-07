@@ -103,6 +103,25 @@ namespace WebAPIHarjoitusKoodi.Controllers
             }
         }
 
+        [HttpDelete]
+        [Route("{key}")]
+
+        public ActionResult DeleteSingle(string key)
+        {
+            NorthwindOriginalContext context = new();
+            Customer asiakas = context.Customers.Find(key);
+
+            if (asiakas != null)
+            {
+                context.Customers.Remove(asiakas);
+                context.SaveChanges();
+                return Ok("Asiakas " + key + "poistettiin tietokannasta!");
+            } 
+            else
+            {
+                return NotFound("Asiakasta " + key + "ei löydy!");
+            }
+        }
         
     }
 }
