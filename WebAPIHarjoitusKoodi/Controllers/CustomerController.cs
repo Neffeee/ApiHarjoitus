@@ -115,11 +115,11 @@ namespace WebAPIHarjoitusKoodi.Controllers
             {
                 context.Customers.Remove(asiakas);
                 context.SaveChanges();
-                return Ok("Asiakas " + key + "poistettiin tietokannasta!");
+                return Ok("Asiakas " + key + " poistettiin tietokannasta!");
             } 
             else
             {
-                return NotFound("Asiakasta " + key + "ei löydy!");
+                return NotFound("Asiakasta " + key + " ei löydy!");
             }
         }
         
