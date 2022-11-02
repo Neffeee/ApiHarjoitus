@@ -8,12 +8,21 @@ namespace WebAPIHarjoitusKoodi.Controllers
     [ApiController]
     public class CustomerController : ControllerBase
     {
+        //private readonly NorthwindOriginalContext db = new();
+
+        // Dependency Injection tyyli
+        private readonly NorthwindOriginalContext db;
+
+        public CustomerController(NorthwindOriginalContext dbparam)
+        {
+            db = dbparam;
+        }
+
         [HttpGet]
         [Route("")]
          public List<Customer> GetAllCustomers()
-        {
-            NorthwindOriginalContext context = new NorthwindOriginalContext();
-            List<Customer> customers = context.Customers.ToList();
+        {           
+            List<Customer> customers = db.Customers.ToList();
             return customers;
         }
 
@@ -21,7 +30,6 @@ namespace WebAPIHarjoitusKoodi.Controllers
         [Route("{id}")]
         public Customer GetOneCustomer(string id)
         {
-            NorthwindOriginalContext db = new NorthwindOriginalContext();
             Customer customer = db.Customers.Find(id);
              return customer;
 
@@ -30,7 +38,6 @@ namespace WebAPIHarjoitusKoodi.Controllers
         [Route("country/{key}")]
         public List<Customer> GetCustomers(string key)
         {
-            NorthwindOriginalContext db = new NorthwindOriginalContext();
 
             var someCustomers = from c in db.Customers
                                 where c.Country == key
@@ -44,12 +51,11 @@ namespace WebAPIHarjoitusKoodi.Controllers
         [Route("")] //<-- Routen placeholder
         public ActionResult PostCreateNew([FromBody] Customer asiakas)
         {
-            NorthwindOriginalContext context = new();
 
             try
             {
-                context.Customers.Add(asiakas);
-                context.SaveChanges();
+                db.Customers.Add(asiakas);
+                db.SaveChanges();
 
                 return Ok(asiakas.CustomerId); // Palauttaa vasta luodun uuden asiakkaan avaimen arvon.
             }
@@ -59,7 +65,7 @@ namespace WebAPIHarjoitusKoodi.Controllers
             }
             finally
             {
-                context.Dispose();
+                db.Dispose();
             }
         }
 
@@ -68,11 +74,10 @@ namespace WebAPIHarjoitusKoodi.Controllers
 
         public ActionResult PutEdit(string key, [FromBody] Customer newData) // Key on routessa ja toinen para (dataobjekti)tulee HTTP Bodyssä
         {
-            NorthwindOriginalContext context = new();
 
             try
             {
-                Customer customer = context.Customers.Find(key);
+                Customer customer = db.Customers.Find(key);
                 if (customer != null)
                 {
                     customer.CompanyName = newData.CompanyName;
@@ -83,7 +88,7 @@ namespace WebAPIHarjoitusKoodi.Controllers
                     customer.City = newData.City;
                     customer.PostalCode = newData.PostalCode;
                     customer.Phone = newData.Phone;
-                    context.SaveChanges();
+                    db.SaveChanges();
                     return Ok(customer.CustomerId);
 
                 }
@@ -99,7 +104,7 @@ namespace WebAPIHarjoitusKoodi.Controllers
             }
             finally
             {
-                context.Dispose();
+                db.Dispose();
             }
         }
 
@@ -108,13 +113,12 @@ namespace WebAPIHarjoitusKoodi.Controllers
 
         public ActionResult DeleteSingle(string key)
         {
-            NorthwindOriginalContext context = new();
-            Customer asiakas = context.Customers.Find(key);
+            Customer asiakas = db.Customers.Find(key);
 
             if (asiakas != null)
             {
-                context.Customers.Remove(asiakas);
-                context.SaveChanges();
+                db.Customers.Remove(asiakas);
+                db.SaveChanges();
                 return Ok("Asiakas " + key + " poistettiin tietokannasta!");
             } 
             else

@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "U4ab+JSFZP+KoJC+zlUDuzuTMEaGaREmU82Rs78bdgk+fHf+msdchunhUdlBpV8nfddtccGU+usrFOgT3ahHVw==",
+  "dgSpecHash": "t2NDnVkUyZiYacYb3iNkADhNGFzI5J0uzN5b4jRNeveL+usrrX5+xGMGdZT3DQBJxRANYlt2wKoHYX0e1u3Juw==",
   "success": true,
   "projectFilePath": "E:\\Opinnot 2022\\API\\WebAPIHarjoitusKoodi\\WebAPIHarjoitusKoodi\\WebAPIHarjoitusKoodi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\neffe\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
-    "C:\\Users\\neffe\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.8\\microsoft.aspnetcore.authentication.jwtbearer.6.0.8.nupkg.sha512",
+    "C:\\Users\\neffe\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.10\\microsoft.aspnetcore.authentication.jwtbearer.6.0.10.nupkg.sha512",
     "C:\\Users\\neffe\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\neffe\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\neffe\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
