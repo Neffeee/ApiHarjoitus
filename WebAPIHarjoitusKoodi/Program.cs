@@ -27,7 +27,7 @@ builder.Services.AddCors(options =>
 // ------Connection string luetaan app settings.json tiedostosta--------------
 
 builder.Services.AddDbContext<NorthwindOriginalContext>(options => options.UseSqlServer(
-    builder.Configuration.GetConnectionString("paikallinen") // T‰h‰n lis‰t‰‰n sen connectionstringin nimi mihin halutaan yhdist‰‰.
+    builder.Configuration.GetConnectionString("pilvi") // T‰h‰n lis‰t‰‰n sen connectionstringin nimi mihin halutaan yhdist‰‰. (K‰ytˆss‰ paikallinen tai pilvi)
     ));
 
 
